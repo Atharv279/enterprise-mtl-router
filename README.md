@@ -157,5 +157,4 @@ These decisions aim to make a **realistic enterprise AI system**: it’s not jus
 
 By combining NLP models with optimization, this design mirrors real-world AI products (think intelligent dispatch or complaint systems in utilities). Each component choice is industry-standard, ensuring the system is both powerful and maintainable.
 
-**References:** We followed best practices for README and docs【22†L148-L157】【25†L219-L223】【27†L74-L82】【28†L386-L394】, ensuring a clear presentation of architecture (diagram-as-code) and usage.
 
