@@ -6,7 +6,6 @@
 - **Technologies:**  A Hugging Face-style text embedding model (multilingual-e5), a PyTorch MTL network, and an OR-Tools optimizer for assignment.  
 - **Usage:** End users run `main.py`, input a complaint, and the system outputs a JSON with predicted priority, ETA, and assigned officer.  
 
-This README follows best practices for GitHub projects【22†L148-L157】【22†L158-L166】. We include a clear project description, installation steps, example usage, and mention of the pipeline architecture. A link to the detailed architecture document is provided below.
 
 ## Features
 
@@ -33,7 +32,7 @@ Follow these steps to set up the environment and run the pipeline【22†L148-L1
    ```bash
    pip install -r requirements.txt
    ```  
-   The `requirements.txt` includes PyTorch, faster-whisper, transformers, lancedb, OR-Tools, and OCR libraries. This ensures all AI models and tools load correctly on your platform【9†L394-L402】.  
+   The `requirements.txt` includes PyTorch, faster-whisper, transformers, lancedb, OR-Tools, and OCR libraries. This ensures all AI models and tools load correctly.
 
 *(On some systems, install additional tools like `ffmpeg` for audio support.)*
 
@@ -86,8 +85,7 @@ The JSON shows the complaint ID, predicted priority level, estimated ETA, and ch
 └── requirements.txt # Python dependencies
 ```
 
-Each module is documented in code, and schemas ensure structured data (using Pydantic). The project follows an “AI as code” philosophy: the design (shown below) is captured in version-controlled docs, not outdated diagrams【27†L74-L82】【28†L390-L394】.
-
+Each module is documented in code, and schemas ensure structured data (using Pydantic). The project follows an “AI as code” philosophy: the design (shown below) is captured in version-controlled docs.
 ## Architecture Diagram
 
 ```mermaid
@@ -119,7 +117,7 @@ This **flowchart** shows the data flow of the system:
 - **Cost Matrix:** Computes similarity (inverse of cosine) between complaint vector and each officer’s skill vector.  
 - **OR-Tools Optimization:** Solves the assignment problem (minimize total cost under constraints).  
 
-*(Mermaid diagrams are integrated as code, ensuring the architecture docs live in the repo and stay up-to-date【27†L74-L82】【28†L390-L394】.)*
+
 
 ## Architecture Document (docs/architecture.md)
 
@@ -144,7 +142,6 @@ This system is a *hybrid AI pipeline* blending modern NLP with traditional optim
 - **Why OR-Tools?** We considered simpler heuristics, but OR-Tools provides rigorous, scalable assignment solutions. It’s used in many industry applications (e.g. delivery routing) and fits our needs for constraints (capacity, one-to-one assignment).
 - **Vector vs. Rule:** Instead of hand-crafted rules (e.g., if "fire" then high priority), we use learned models. This allows scaling beyond the vocabulary manually curated rules, at the cost of needing good training data.
 
-These decisions aim to make a **realistic enterprise AI system**: it’s not just an ML notebook, but a structured pipeline with explicit modules and documented interfaces. By keeping architecture diagrams and docs version-controlled, we ensure the design evolves with the code【27†L74-L82】【28†L386-L394】.
 
 ## Summary of Engineering Decisions
 
@@ -156,5 +153,6 @@ These decisions aim to make a **realistic enterprise AI system**: it’s not jus
 - **Documentation as Code:** We follow Ranjan Kumar’s best practice: embedding architecture diagrams and docs in the repo so they stay current【27†L74-L82】【28†L390-L394】. The `docs/architecture.md` file includes the above Mermaid flowchart and design notes.
 
 By combining NLP models with optimization, this design mirrors real-world AI products (think intelligent dispatch or complaint systems in utilities). Each component choice is industry-standard, ensuring the system is both powerful and maintainable.
+
 
 
