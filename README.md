@@ -92,13 +92,22 @@ Each module is documented in code, and schemas ensure structured data (using Pyd
 
 ```mermaid
 flowchart TD
-    Complaint(["Incoming Complaint (Text/Media)"]) --> Ingestion{Ingestion Pipeline}
-    Ingestion --> ASR_OCR([ASR / OCR])
-    ASR_OCR --> Embed([Semantic Embedding (e5 model)])
-    Embed --> MTL([MTL Network<br/>(Priority + ETA)])
-    MTL --> Cost([Cost Matrix])
-    Cost --> ORTools{OR-Tools<br/>Optimization}
-    ORTools --> Assignment([Officer Assignment])
+    Complaint["Incoming Complaint (Text / Media)"]
+    Ingestion["Ingestion Pipeline"]
+    ASR_OCR["ASR / OCR"]
+    Embed["Semantic Embedding - e5 Model"]
+    MTL["MTL Network - Priority + ETA"]
+    Cost["Cost Matrix"]
+    ORTools["OR-Tools Optimization"]
+    Assignment["Officer Assignment"]
+
+    Complaint --> Ingestion
+    Ingestion --> ASR_OCR
+    ASR_OCR --> Embed
+    Embed --> MTL
+    MTL --> Cost
+    Cost --> ORTools
+    ORTools --> Assignment
 ```
 
 This **flowchart** shows the data flow of the system:
@@ -149,3 +158,4 @@ These decisions aim to make a **realistic enterprise AI system**: it’s not jus
 By combining NLP models with optimization, this design mirrors real-world AI products (think intelligent dispatch or complaint systems in utilities). Each component choice is industry-standard, ensuring the system is both powerful and maintainable.
 
 **References:** We followed best practices for README and docs【22†L148-L157】【25†L219-L223】【27†L74-L82】【28†L386-L394】, ensuring a clear presentation of architecture (diagram-as-code) and usage.
+
