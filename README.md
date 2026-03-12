@@ -16,7 +16,7 @@
 
 ## Installation
 
-Follow these steps to set up the environment and run the pipeline【22†L148-L157】:
+Follow these steps to set up the environment and run the pipeline:
 
 1. **Clone the repository:**  
    ```bash
@@ -61,7 +61,7 @@ This will prompt or read a sample complaint, perform all steps, and print a fina
 }
 ```
 
-The JSON shows the complaint ID, predicted priority level, estimated ETA, and chosen officer. See the **Architecture** section or `docs/architecture.md` for details on the pipeline and data flow【28†L390-L394】.
+The JSON shows the complaint ID, predicted priority level, estimated ETA, and chosen officer.
 
 ## Code Structure
 
@@ -119,9 +119,9 @@ This **flowchart** shows the data flow of the system:
 
 
 
-## Architecture Document (docs/architecture.md)
+## Architecture Document 
 
-*(See `docs/architecture.md` for a more detailed technical write-up.)* This document explains the engineering decisions and system design in depth:
+ This document explains the engineering decisions and system design in depth:
 
 - **Semantic Layer:** We chose **multilingual-e5-large-instruct** as the embedding model. It provides high-quality semantic representations across languages and domains【9†L374-L382】. Unlike static keywords, this transformer captures nuance in text. Its output (1024-d vector) feeds both routing and prediction. Using an ML-based embedder allows the system to understand synonyms and related concepts, crucial for correctly matching complaints to officer expertise.
 
@@ -145,7 +145,7 @@ This system is a *hybrid AI pipeline* blending modern NLP with traditional optim
 
 ## Summary of Engineering Decisions
 
-- **Transformer Embeddings (e5-large):** Chosen for its high semantic accuracy and multi-language support. We cite Hugging Face’s transformer framework as standard for state-of-the-art models【9†L374-L382】.
+- **Transformer Embeddings (e5-large):** Chosen for its high semantic accuracy and multi-language support. We cite Hugging Face’s transformer framework as standard for state-of-the-art models.
 - **Whisper ASR + OCR:** Enables handling audio/video inputs. Whisper (via *faster-whisper*) is lightweight and accurate for transcription.
 - **Pydantic Schemas:** `schemas.py` defines Complaint/Officer data models, ensuring type-safety across modules (good practice in mature projects).
 - **LanceDB Vector Store:** Though not in the demo pipeline, we plan to index embeddings in LanceDB for scaling to many complaints (common in production vector search systems).
@@ -153,6 +153,7 @@ This system is a *hybrid AI pipeline* blending modern NLP with traditional optim
 - **Documentation as Code:** We follow Ranjan Kumar’s best practice: embedding architecture diagrams and docs in the repo so they stay current【27†L74-L82】【28†L390-L394】. The `docs/architecture.md` file includes the above Mermaid flowchart and design notes.
 
 By combining NLP models with optimization, this design mirrors real-world AI products (think intelligent dispatch or complaint systems in utilities). Each component choice is industry-standard, ensuring the system is both powerful and maintainable.
+
 
 
 
